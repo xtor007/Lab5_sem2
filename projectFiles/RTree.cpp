@@ -31,3 +31,23 @@ void RTree::addToNode(Node *node, Point *point) {
 void RTree::addPoint(Point *point) {
     addToNode(&root, point);
 }
+
+void RTree::checkNode(Node *node, vector<Point*> *forRes, Point nowPoint, float radius) {
+    
+    if (node->point != NULL) {
+        forRes->push_back(node->point);
+    } else {
+        if (node->left->area.isInArea(nowPoint, radius)) {
+            checkNode(node->left, forRes, nowPoint, radius);
+        }
+        if (node->right->area.isInArea(nowPoint, radius)) {
+            checkNode(node->right, forRes, nowPoint, radius);
+        }
+    }
+}
+
+vector<Point*> RTree::findNear(Point nowPoint, float radius) {
+    vector<Point*> res;
+    checkNode(&root, &res, nowPoint, radius);
+    return res;
+}

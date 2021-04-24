@@ -11,56 +11,25 @@
 #include "UserInterface.hpp"
 using namespace std;
 
-Point get(string rawInfo){
-    string temp = "";
-    string latitude = "";
-    string longitude = "";
-    string type = "";
-    string subtype = "";
-    string name = "";
-    string adress = "";
-    int counter = 0;
-    for (int i = 0; i < rawInfo.size(); i++) {
-        if (rawInfo[i] != ';') {
-            if (rawInfo[i] == ',' && (counter == 0 || counter == 1)) {
-                rawInfo[i] = '.';
-            }
-            temp += rawInfo[i];
-        }
-        else{
-            counter++;
-            switch (counter) {
-                case 1:
-                    latitude = temp;
-                    break;
-                case 2:
-                    longitude = temp;
-                    break;
-                case 3:
-                    type = temp;
-                    break;
-                case 4:
-                    subtype = temp;
-                    break;
-                case 5:
-                    name = temp;
-                    break;
-                case 6:
-                    adress = temp;
-                    break;
-                default:
-                    break;
-            }
-            temp = "";
-        }
-    }
-    Point Destination(stod(latitude), stod(longitude), type, subtype, name, adress);
-    return Destination;
-}
 
 int main(int argc, const char * argv[]) {
-    Point dot = get("51,67881;33,91008;shop;;АТБ;Терещенків вулиця,28;");
-    cout<<dot.adress<<endl;
-    Interface aga;
+    Point p1; p1.x=3; p1.y=4;
+    Point p2; p2.x=-3; p2.y=5;
+    Point p3; p3.x=3; p3.y=-4;
+    Point p4; p4.x=6; p4.y=5;
+    Point p5; p5.x=7; p5.y=8;
+    Point p6; p6.x=1; p6.y=2;
+    
+    RTree tree;
+    tree.addPoint(&p1);
+    tree.addPoint(&p2);
+    tree.addPoint(&p3);
+    tree.addPoint(&p4);
+    tree.addPoint(&p5);
+    tree.addPoint(&p6);
+    
+    Point fp; fp.x=2; fp.y=2;
+    vector<Point*> res = tree.findNear(fp, 4);
+    
     return 0;
 }
