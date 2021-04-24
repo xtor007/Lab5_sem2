@@ -16,7 +16,7 @@ FileReader::FileReader(string path, RTree &Tree, int &exitCode){
         while (!file.eof()) {
             string tempStr = "";
             getline(file, tempStr);
-            cout<<counter<<": "<<tempStr<<endl;
+            //cout<<counter<<": "<<tempStr<<endl;
             Point place = readLine(tempStr);
             Tree.addPoint(&place);
             counter++;
