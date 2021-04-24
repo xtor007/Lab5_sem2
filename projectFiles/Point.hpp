@@ -24,6 +24,7 @@ public:
     string adress;
     
     Point (float latitude, float longitude, string type, string subtype, string name, string adress);
+    Point () {}
     
     //тут функция перехода на плоские координаты
     
