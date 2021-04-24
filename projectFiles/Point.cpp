@@ -6,3 +6,12 @@
 //
 
 #include "Point.hpp"
+
+Point::Point(float latitude, float longitude, string type, string subtype, string name, string adress){
+    this->latitude = latitude;
+    this->longitude = longitude;
+    this->type = type;
+    this->subtype = subtype;
+    this->name = name;
+    this->adress = adress;
+}
