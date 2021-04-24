@@ -11,6 +11,7 @@
 #include <stdio.h>
 #include <iostream>
 #include "Reading.hpp"
+#include "RTree.hpp"
 
 using namespace std;
 
@@ -23,12 +24,10 @@ class Interface{
     }
 public:
     Interface(){
+        RTree Tree;
         cout<<"Enter path to .csv-file: "; getline(cin, path);
-        FileReader fileIn(path, exitCode);
-        if (exitCode) {
-            callError("We couldn't open the file");
-        }
-        
+        FileReader fileIn(path, Tree, exitCode);
+        if (exitCode) callError("We couldn't open the file");
     }
 };
 
