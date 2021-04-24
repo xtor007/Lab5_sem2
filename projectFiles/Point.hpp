@@ -23,14 +23,7 @@ public:
     string name;
     string adress;
     
-    Point (float latitude, float longitude, string type, string subtype, string name, string adress){
-        this->latitude = latitude;
-        this->longitude = longitude;
-        this->type = type;
-        this->subtype = subtype;
-        this->name = name;
-        this->adress = adress;
-    }
+    Point (float latitude, float longitude, string type, string subtype, string name, string adress);
     Point () {}
     
     //тут функция перехода на плоские координаты

@@ -18,17 +18,9 @@ using namespace std;
 class Interface{
     string path;
     int exitCode = 0;
-    void callError(string error){
-        cout<<error<<endl;
-        exit(1);
-    }
+    void callError(string error);
 public:
-    Interface(){
-        RTree Tree;
-        cout<<"Enter path to .csv-file: "; getline(cin, path);
-        FileReader fileIn(path, Tree, exitCode);
-        if (exitCode) callError("We couldn't open the file");
-    }
+    Interface();
 };
 
 
