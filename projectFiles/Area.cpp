@@ -27,10 +27,15 @@ void Area::addPoint(Point newPoint) {
             minY = newPoint.y;
         }
     }
+    numberOfPoints++;
 }
 
 bool Area::isInArea(Point startPoint, float radius) {
     //тут я опишу поддходит ли эта область для наших данных
     //эта функция нужна будет при поиске точек
     return false;
+}
+
+float Area::toCenter(Point point) {
+    return sqrt((maxX + minX)*(maxX + minX)/4 + (maxY + minY)*(maxY + minY)/4);
 }

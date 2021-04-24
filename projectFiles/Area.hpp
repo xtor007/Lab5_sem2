@@ -22,6 +22,7 @@ public:
     int numberOfPoints = 0;
     void addPoint(Point newPoint);
     bool isInArea(Point startPoint, float radius);
+    float toCenter(Point point);
 };
 
 #endif /* Area_hpp */
