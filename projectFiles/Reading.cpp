@@ -7,19 +7,19 @@
 
 #include "Reading.hpp"
 
-FileReader::FileReader(string path, RTree &Tree, int &exitCode){
+FileReader::FileReader(string path, RTree *tree, int &exitCode){
     this->path = path;
     ifstream file;
     file.open(path);
     if (file.is_open()) {
-        int counter = 0;
+        //int counter = 0;
         while (!file.eof()) {
             string tempStr = "";
             getline(file, tempStr);
-            cout<<counter<<": "<<tempStr<<endl;
+            //cout<<counter<<": "<<tempStr<<endl;
             Point place = readLine(tempStr);
-            Tree.addPoint(&place);
-            counter++;
+            tree->addPoint(place);
+            //counter++;
         }
     }
     else{

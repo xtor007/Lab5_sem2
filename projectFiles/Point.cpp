@@ -33,7 +33,9 @@ float Point::distanceTo(float xTo, float yTo) {
 }
 
 string Point::forPrint() {
-    string res;
-    res += to_string(latitude) + " " + to_string(longitude) + " " + type + " " + subtype + " " + name + " " + adress;
+    string res = "";
+    
+    res = to_string(latitude) + " " + to_string(longitude) + " " + type + " " + subtype + " " + name + " " + adress;
     return res;
 }
+

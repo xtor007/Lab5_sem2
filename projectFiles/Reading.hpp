@@ -20,7 +20,7 @@ class FileReader{
     string path;
     Point readLine(string rawInfo);
 public:
-    FileReader(string path, RTree &Tree, int &exitCode);
+    FileReader(string path, RTree *Tree, int &exitCode);
 };
 
 

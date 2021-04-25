@@ -20,7 +20,7 @@ void RTree::addToNode(Node *node, Point *point) {
         node->point = NULL;
     }
     if (node->area.numberOfPoints > 2) {
-        if (node->left->area.toCenter(*point) > node->right->area.toCenter(*point)) {
+        if (node->left->area.toCenter(*point) > node->right->area.toCenter(*point)) { 
             addToNode(node->right, point);
         } else {
             addToNode(node->left, point);
