@@ -11,7 +11,7 @@
 #include "UserInterface.hpp"
 using namespace std;
 
-<<<<<<< HEAD
+
 int main(int argc, const char * argv[]) {
     Interface user;
     return 0;
