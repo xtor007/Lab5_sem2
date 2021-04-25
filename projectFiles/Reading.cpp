@@ -18,7 +18,7 @@ FileReader::FileReader(string path, RTree *tree, int &exitCode){
             getline(file, tempStr);
             //cout<<counter<<": "<<tempStr<<endl;
             Point place = readLine(tempStr);
-            tree->addPoint(place);
+            tree->addPoint(&place);
             //counter++;
         }
     }
