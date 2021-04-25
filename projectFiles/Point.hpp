@@ -10,9 +10,11 @@
 
 #include <stdio.h>
 #include <iostream>
+#include <cmath>
 using namespace std;
 
 class Point {
+    const int EarthRadius = 6371;
 public:
     float latitude;
     float longitude;
@@ -29,6 +31,8 @@ public:
     float distanceTo(float xTo, float yTo);
     
     //тут функция перехода на плоские координаты
+    float getX();
+    float getY();
     
 }; //конструктор еще не описаный и мб нужно будет закинуть все в прайват и сделать геттеры, но это не точно
 

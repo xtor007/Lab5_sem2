@@ -12,14 +12,14 @@ FileReader::FileReader(string path, RTree &Tree, int &exitCode){
     ifstream file;
     file.open(path);
     if (file.is_open()) {
-        int counter = 0;
+        //int counter = 0;
         while (!file.eof()) {
             string tempStr = "";
             getline(file, tempStr);
             //cout<<counter<<": "<<tempStr<<endl;
             Point place = readLine(tempStr);
             Tree.addPoint(&place);
-            counter++;
+            //counter++;
         }
     }
     else{
