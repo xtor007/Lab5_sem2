@@ -31,6 +31,7 @@ void Area::addPoint(Point newPoint) {
 }
 
 bool Area::isInArea(Point startPoint, float radius) {
+    
     if ((minX <= startPoint.x) && (maxX >= startPoint.x) && (minY <= startPoint.y) && (maxY >= startPoint.y)) {
         return true;
     }
