@@ -8,10 +8,18 @@
 #include "UserInterface.hpp"
 
 Interface::Interface(){
-    RTree Tree;
-    cout<<"Enter path to .csv-file: "; getline(cin, path);
-    FileReader fileIn(path, Tree, exitCode);
+    RTree tree;
+    cout<< "Enter path to .csv-file: "; getline(cin, path);
+    FileReader fileIn(path, tree, exitCode);
     if (exitCode) callError("We couldn't open the file");
+    float latitude, longitude, radius;
+    cout << "Enter your coordinates and radius of the desired sector:" << endl;
+    cin >> latitude >> longitude >> radius;
+    Point myPoint(latitude,longitude,"","","","");
+    vector<Point*> resoult = tree.findNear(myPoint, radius);
+    for (int i=0; i<resoult.size(); i++) {
+        cout << resoult[i]->forPrint() << endl;
+    }
 }
 
 void Interface::callError(string error){
