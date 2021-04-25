@@ -11,6 +11,7 @@
 #include <stdio.h>
 #include <iostream>
 #include "Area.hpp"
+#include <vector>
 
 using namespace std;
 
@@ -25,9 +26,11 @@ public:
 
 class RTree {
     void addToNode(Node *node, Point *point);
+    void checkNode(Node *node, vector<Point*> *forRes, Point nowPoint, float radius);
 public:
     Node root;
     void addPoint(Point *point);
+    vector<Point*> findNear(Point nowPoint, float radius);
 };
 
 #endif /* RTree_hpp */

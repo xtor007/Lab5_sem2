@@ -15,3 +15,7 @@ Point::Point(float latitude, float longitude, string type, string subtype, strin
     this->name = name;
     this->adress = adress;
 }
+
+float Point::distanceTo(float xTo, float yTo) {
+    return sqrt((xTo - x)*(xTo - x) + (yTo - y)*(yTo - y));
+}

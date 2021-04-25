@@ -26,6 +26,8 @@ public:
     Point (float latitude, float longitude, string type, string subtype, string name, string adress);
     Point () {}
     
+    float distanceTo(float xTo, float yTo);
+    
     //тут функция перехода на плоские координаты
     
 }; //конструктор еще не описаный и мб нужно будет закинуть все в прайват и сделать геттеры, но это не точно
