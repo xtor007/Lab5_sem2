@@ -44,14 +44,22 @@ bool Area::isInArea(Point startPoint, float radius) {
 //    if (((maxX - startPoint.x)*(maxX - startPoint.x) + (maxY - startPoint.y)*(maxY - startPoint.y)) <= radius*radius) {
 //        return true;
 //    }
-    if (((minX - startPoint.x) <= radius+0.0001) && ((startPoint.x - maxX) <= radius+0.0001) && ((minY - startPoint.y) <= radius+0.0001) && ((startPoint.y - maxY) <= radius+0.0001)) {
+//    if (((minX - startPoint.x) <= radius+0.0001) && ((startPoint.x - maxX) <= radius+0.0001) && ((minY - startPoint.y) <= radius+0.0001) && ((startPoint.y - maxY) <= radius+0.0001)) {
+//        return true;
+//    }
+    if ((minX <= startPoint.x) && (maxX >= startPoint.x) && (minY <= startPoint.y) && (maxY >= startPoint.y)) {
+        return true;
+    }
+    if ((startPoint.distanceTo(minX, minY) <= radius) || (startPoint.distanceTo(maxX, minY) <= radius) || (startPoint.distanceTo(minX, maxY) <= radius) || (startPoint.distanceTo(maxX, maxY) <= radius)) {
         return true;
     }
     return false;
 }
 
 float Area::toCenter(Point point) {
-    return sqrt((maxX + minX)*(maxX + minX)/4 + (maxY + minY)*(maxY + minY)/4);
+    float x = (maxX + minX)/2;
+    float y = (maxY + minY)/2;
+    return sqrt((x - point.x)*(x - point.x) + (y - point.y)*(y - point.y));
 }
 
 
