@@ -12,6 +12,7 @@
 #include <iostream>
 #include "Reading.hpp"
 #include "RTree.hpp"
+#include "output.hpp"
 
 using namespace std;
 
