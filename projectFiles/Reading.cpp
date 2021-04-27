@@ -26,9 +26,7 @@ FileReader::FileReader(string path, RTree *tree, int *exitCode){
     else{
         *exitCode = 1;
     }
-    for (int i=0; i<=data.size(); i++) {
-        tree->addPoint(&data[i]);
-    }
+    if (!*exitCode) for (int i=0; i<=data.size(); i++) tree->addPoint(&data[i]);
 }
 
 Point FileReader::readLine(string rawInfo){

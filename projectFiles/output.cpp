@@ -10,14 +10,18 @@
 Output::Output(string path, vector<Point*> points){
     ofstream out;
     out.open(path);
+    setlocale(LC_CTYPE, "Russian");
+    
     if (out.is_open()) {
-        out<<endl;
+        out<<"№;"<<"широта ї;"<<"Longitude;"<<"Name;"<<"Type;"<<"Subtype;"<<"Adress;\n";
         for (int i = 0; i < points.size(); i++) {
-            out<<i<<")|"<<setw(10)<<points[i]->latitude<<setw(10)<<
-            "|"<<setw(10)<<points[i]->longitude<<setw(10)<<
-            "|"<<setw(10)<<points[i]->type<<setw(10)<<
-            "|"<<setw(10)<<points[i]->subtype<<setw(10)<<
-            "|"<<setw(10)<<points[i]->adress<<endl;
+            cout<<points[i]->longitude<<points[i]->latitude<<endl<<points[i]->adress<<endl;
+            out<<i<<";"<<points[i]->latitude<<
+            ";"<<points[i]->longitude<<
+            ";"<<points[i]->name<<
+            ";"<<points[i]->type<<
+            ";"<<points[i]->subtype<<
+            ";"<<points[i]->adress<<endl;
         }
         out.close();
     }

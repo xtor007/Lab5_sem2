@@ -17,7 +17,7 @@ Interface::Interface(){
     cin >> latitude >> longitude >> radius;
     Point myPoint(latitude,longitude,"","","","");
     vector<Point*> resoult = tree.findNear(myPoint, radius);
-    path = "/Users/yaroslav/Desktop/ukraine.txt";
+    path = "/Users/yaroslav/Desktop/Lab5_sem2/ukraine.txt";
     Output output(path, resoult);
 //    for (int i=0; i<resoult.size(); i++) {
 //        cout << resoult[i]->forPrint() << endl;
