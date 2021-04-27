@@ -33,7 +33,7 @@ void RTree::addPoint(Point *point) {
 }
 
 void RTree::checkNode(Node *node, vector<Point*> *forRes, Point nowPoint, float radius) {
-    
+    //смотрим пересекается ли данная облсть с кругом
     if (node->point != NULL) {
         forRes->push_back(node->point);
     } else {

@@ -39,6 +39,8 @@ bool Area::isInArea(Point startPoint, float radius) {
         return true;
     }
     
+    //учитыаем то, что с одной стороны Земли можем попасть на другую
+    
     float parallelLength = 2*M_PI*startPoint.EarthRadius*cos(startPoint.y/startPoint.EarthRadius);
     float newX;
     if (startPoint.x > 0) {
@@ -57,6 +59,7 @@ bool Area::isInArea(Point startPoint, float radius) {
 }
 
 float Area::toCenter(Point point) {
+    //для примерной оценки близости точки к области
     float x = (maxX + minX)/2;
     float y = (maxY + minY)/2;
     return sqrt((x - point.x)*(x - point.x) + (y - point.y)*(y - point.y));

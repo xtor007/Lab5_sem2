@@ -14,19 +14,12 @@ Point::Point(float latitude, float longitude, string type, string subtype, strin
     this->subtype = subtype;
     this->name = name;
     this->adress = adress;
+    // приходим к декартовым координатам
     //for X
     x = EarthRadius*cos(latitude*M_PI/180)*(longitude*M_PI/180);
     //for Y
     y = (latitude*M_PI/180)*EarthRadius;
 }
-
-//float Point::getX(){
-//    return x;
-//}
-//
-//float Point::getY(){
-//    return x;
-//}
 
 float Point::distanceTo(float xTo, float yTo) {
     return sqrt((xTo - x)*(xTo - x) + (yTo - y)*(yTo - y));
