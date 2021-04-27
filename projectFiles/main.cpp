@@ -17,7 +17,7 @@ int main(int argc, const char * argv[]) {
     return 0;
 }
 
-// /Users/yaroslav/Desktop/ukraine.csv
+// /Users/yaroslav/Desktop/Lab5_sem2/source/ukraine.csv
 // /Users/khramchenko/Desktop/Reps/Lab5_sem2/source/ukraine.csv
 // /Users/khramchenko/Desktop/Reps/Lab5_sem2/source/round.csv
 

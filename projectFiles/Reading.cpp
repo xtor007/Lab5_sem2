@@ -24,11 +24,9 @@ FileReader::FileReader(string path, RTree *tree, int *exitCode){
         }
     }
     else{
-        *exitCode = 1;
+        *exitCode = 1;  // for case if input is wrong
     }
-    for (int i=0; i<=data.size(); i++) {
-        tree->addPoint(&data[i]);
-    }
+    if (!*exitCode) for (int i=0; i<=data.size(); i++) tree->addPoint(&data[i]); // if all is OK -> we add point to the tree structure
 }
 
 Point FileReader::readLine(string rawInfo){
@@ -43,7 +41,7 @@ Point FileReader::readLine(string rawInfo){
     for (int i = 0; i < rawInfo.size(); i++) {
         if (rawInfo[i] != ';') {
             if (rawInfo[i] == ',' && (counter == 0 || counter == 1)) {
-                rawInfo[i] = '.';
+                rawInfo[i] = '.';  // "floats" in the file were written with ',' but compiler sees only '.'
             }
             temp += rawInfo[i];
         } else{

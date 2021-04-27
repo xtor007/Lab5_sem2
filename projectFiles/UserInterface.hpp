@@ -12,13 +12,15 @@
 #include <iostream>
 #include "Reading.hpp"
 #include "RTree.hpp"
+#include "output.hpp"
 
 using namespace std;
 
+// interface class
 class Interface{
-    string path;
+    string path; // path to the .csv-file
     int exitCode = 0;
-    void callError(string error);
+    void callError(string error);  // func for emergence exit
 public:
     Interface();
 };

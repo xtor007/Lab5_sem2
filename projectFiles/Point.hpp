@@ -29,7 +29,7 @@ public:
     Point () {}
     
     float distanceTo(float xTo, float yTo);
-    string forPrint();
+    string forPrint(float x, float y);
+    
 };
-
 #endif /* Point_hpp */

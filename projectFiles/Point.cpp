@@ -25,10 +25,8 @@ float Point::distanceTo(float xTo, float yTo) {
     return sqrt((xTo - x)*(xTo - x) + (yTo - y)*(yTo - y));
 }
 
-string Point::forPrint() {
-    string res = "";
-    
-    res = to_string(latitude) + " " + to_string(longitude) + " " + type + " " + subtype + " " + name + " " + adress;
+string Point::forPrint(float x, float y) {
+    string res = "Широта: " + to_string(latitude) + "\n" + "Довгота: " + to_string(longitude) + "\n" + "Тип: " + type + "\n" + "Вид: " + subtype + "\n" + "Назва: " + name + "\n" + "Адреса: " + adress + "\n" + "Відстань до заданої точки(км.): " + to_string(distanceTo(x, y));
     return res;
 }
 
