@@ -38,10 +38,28 @@ bool Area::isInArea(Point startPoint, float radius) {
     if ((startPoint.distanceTo(minX, minY) <= radius) || (startPoint.distanceTo(maxX, minY) <= radius) || (startPoint.distanceTo(minX, maxY) <= radius) || (startPoint.distanceTo(maxX, maxY) <= radius)) {
         return true;
     }
+    
+    //учитыаем то, что с одной стороны Земли можем попасть на другую
+    
+    float parallelLength = 2*M_PI*startPoint.EarthRadius*cos(startPoint.y/startPoint.EarthRadius);
+    float newX;
+    if (startPoint.x > 0) {
+        newX = startPoint.x - parallelLength;
+    } else {
+        newX = startPoint.x + parallelLength;
+    }
+    
+    if ((minX <= newX) && (maxX >= newX) && (minY <= startPoint.y) && (maxY >= startPoint.y)) {
+        return true;
+    }
+    if ((sqrt((minX - newX)*(minX - newX) + (minY - startPoint.y)*(minY - startPoint.y)) <= radius) || (sqrt((maxX - newX)*(maxX - newX) + (minY - startPoint.y)*(minY - startPoint.y)) <= radius) || (sqrt((minX - newX)*(minX - newX) + (maxY - startPoint.y)*(maxY - startPoint.y)) <= radius) || (sqrt((maxX - newX)*(maxX - newX) + (maxY - startPoint.y)*(maxY - startPoint.y)) <= radius)) {
+        return true;
+    }
     return false;
 }
 
 float Area::toCenter(Point point) {
+    //для примерной оценки близости точки к области
     float x = (maxX + minX)/2;
     float y = (maxY + minY)/2;
     return sqrt((x - point.x)*(x - point.x) + (y - point.y)*(y - point.y));

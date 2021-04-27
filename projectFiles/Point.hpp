@@ -14,12 +14,12 @@
 using namespace std;
 
 class Point {
-    const int EarthRadius = 6371;
 public:
     float latitude;
     float longitude;
     float x;
     float y;
+    const int EarthRadius = 6371;
     string type;
     string subtype;
     string name;
@@ -30,11 +30,6 @@ public:
     
     float distanceTo(float xTo, float yTo);
     string forPrint();
-    
-    //тут функция перехода на плоские координаты
-    //float getX();
-    //float getY();
-    
-}; //конструктор еще не описаный и мб нужно будет закинуть все в прайват и сделать геттеры, но это не точно
+};
 
 #endif /* Point_hpp */
