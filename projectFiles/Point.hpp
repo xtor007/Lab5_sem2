@@ -14,12 +14,12 @@
 using namespace std;
 
 class Point {
-    const int EarthRadius = 6371;
 public:
     float latitude;
     float longitude;
     float x;
     float y;
+    const int EarthRadius = 6371;
     string type;
     string subtype;
     string name;
