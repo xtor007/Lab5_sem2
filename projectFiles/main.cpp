@@ -18,3 +18,6 @@ int main(int argc, const char * argv[]) {
 }
 
 // /Users/yaroslav/Desktop/ukraine.csv
+// /Users/khramchenko/Desktop/Reps/Lab5_sem2/source/ukraine.csv
+
+// 50.6 30.5 100

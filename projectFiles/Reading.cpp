@@ -7,10 +7,11 @@
 
 #include "Reading.hpp"
 
-FileReader::FileReader(string path, RTree &Tree, int &exitCode){
+FileReader::FileReader(string path, RTree *tree, int *exitCode){
     this->path = path;
     ifstream file;
     file.open(path);
+    vector<Point> data;
     if (file.is_open()) {
         //int counter = 0;
         while (!file.eof()) {
@@ -18,12 +19,15 @@ FileReader::FileReader(string path, RTree &Tree, int &exitCode){
             getline(file, tempStr);
             //cout<<counter<<": "<<tempStr<<endl;
             Point place = readLine(tempStr);
-            Tree.addPoint(&place);
+            data.push_back(place);
             //counter++;
         }
     }
     else{
-        exitCode = 1;
+        *exitCode = 1;
+    }
+    for (int i=0; i<=data.size(); i++) {
+        tree->addPoint(&data[i]);
     }
 }
 
@@ -42,8 +46,7 @@ Point FileReader::readLine(string rawInfo){
                 rawInfo[i] = '.';
             }
             temp += rawInfo[i];
-        }
-        else{
+        } else{
             counter++;
             switch (counter) {
                 case 1:

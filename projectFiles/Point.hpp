@@ -29,10 +29,11 @@ public:
     Point () {}
     
     float distanceTo(float xTo, float yTo);
+    string forPrint();
     
     //тут функция перехода на плоские координаты
-    float getX();
-    float getY();
+    //float getX();
+    //float getY();
     
 }; //конструктор еще не описаный и мб нужно будет закинуть все в прайват и сделать геттеры, но это не точно
 

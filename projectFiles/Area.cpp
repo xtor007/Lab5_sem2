@@ -32,21 +32,6 @@ void Area::addPoint(Point newPoint) {
 
 bool Area::isInArea(Point startPoint, float radius) {
     
-//    if (((minX - startPoint.x)*(minX - startPoint.x) + (minY - startPoint.y)*(minY - startPoint.y)) <= radius*radius) {
-//        return true;
-//    }
-//    if (((maxX - startPoint.x)*(maxX - startPoint.x) + (minY - startPoint.y)*(minY - startPoint.y)) <= radius*radius) {
-//        return true;
-//    }
-//    if (((minX - startPoint.x)*(minX - startPoint.x) + (maxY - startPoint.y)*(maxY - startPoint.y)) <= radius*radius) {
-//        return true;
-//    }
-//    if (((maxX - startPoint.x)*(maxX - startPoint.x) + (maxY - startPoint.y)*(maxY - startPoint.y)) <= radius*radius) {
-//        return true;
-//    }
-//    if (((minX - startPoint.x) <= radius+0.0001) && ((startPoint.x - maxX) <= radius+0.0001) && ((minY - startPoint.y) <= radius+0.0001) && ((startPoint.y - maxY) <= radius+0.0001)) {
-//        return true;
-//    }
     if ((minX <= startPoint.x) && (maxX >= startPoint.x) && (minY <= startPoint.y) && (maxY >= startPoint.y)) {
         return true;
     }
