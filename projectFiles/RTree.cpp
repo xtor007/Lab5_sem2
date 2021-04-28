@@ -33,7 +33,7 @@ void RTree::addPoint(Point *point) {
 }
 
 void RTree::checkNode(Node *node, vector<Point*> *forRes, Point nowPoint, float radius) {
-    //смотрим пересекается ли данная облсть с кругом
+    //смотрим пересекается ли данная область с кругом
     if (node->point != NULL) {
         forRes->push_back(node->point);
     } else {
@@ -50,4 +50,43 @@ vector<Point*> RTree::findNear(Point nowPoint, float radius) {
     vector<Point*> res;
     checkNode(&root, &res, nowPoint, radius);
     return res;
+}
+
+void RTree::delPoint(Point *pointToDel) {
+    delInNode(&root, pointToDel);
+}
+
+bool RTree::delInNode(Node *node, Point *pointToDel) {
+    
+    if ((node->left->point != NULL) && pointToDel->isEqual(node->left->point)) {
+        node->left = NULL;
+        //delete node->left->point;
+        node->point = node->right->point;
+        
+        node->area = node->right->area;
+        node->right = NULL;
+        return true;
+    }
+    if ((node->right->point != NULL) && pointToDel->isEqual(node->right->point)) {
+        node->right = NULL;
+        //delete node->right->point;
+        node->point = node->left->point;
+        
+        node->area = node->left->area;
+        node->left = NULL;
+        return true;
+    }
+    bool rightCheck = false;
+    bool leftCheck = false;
+    if ((node->left != NULL) && (node->left->area.isInArea(*pointToDel, 0))) {
+        leftCheck = delInNode(node->left, pointToDel);
+    }
+    if ((node->right != NULL) && (node->right->area.isInArea(*pointToDel, 0))) {
+        rightCheck = delInNode(node->right, pointToDel);
+    }
+    if (rightCheck || leftCheck) {
+        node->area.numberOfPoints--;
+        return true;
+    }
+    return false;
 }

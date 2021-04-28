@@ -30,3 +30,9 @@ string Point::forPrint(float x, float y) {
     return res;
 }
 
+bool Point::isEqual(Point *otherPoint) {
+    if ((latitude == otherPoint->latitude) && (longitude == otherPoint->longitude)) {
+        return true;
+    }
+    return false;
+}

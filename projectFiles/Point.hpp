@@ -30,6 +30,6 @@ public:
     
     float distanceTo(float xTo, float yTo);
     string forPrint(float x, float y);
-    
+    bool isEqual(Point *otherPoint);
 };
 #endif /* Point_hpp */

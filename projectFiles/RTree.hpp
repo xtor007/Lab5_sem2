@@ -27,10 +27,12 @@ public:
 class RTree {
     void addToNode(Node *node, Point *point);
     void checkNode(Node *node, vector<Point*> *forRes, Point nowPoint, float radius);
+    bool delInNode(Node *node, Point *pointToDel);
 public:
     Node root;
     void addPoint(Point *point);
     vector<Point*> findNear(Point nowPoint, float radius);
+    void delPoint(Point *pointToDel);
 };
 
 #endif /* RTree_hpp */

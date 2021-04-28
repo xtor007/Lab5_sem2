@@ -21,6 +21,17 @@ Interface::Interface(){
         cout << i << ") " << resoult[i]->forPrint(myPoint.x, myPoint.y) << endl;  // outputing matching cases
         cout<<endl;
     }
+    cout << "Enter index points to delete: ";
+    int index;
+    do  {
+        cin >> index;
+        if (index != -1) tree.delPoint(resoult[index]);
+    } while (index != -1);
+    vector<Point*> secondResoult = tree.findNear(myPoint, radius);
+    for (int i=0; i<secondResoult.size(); i++) {
+        cout << i << ") " << secondResoult[i]->forPrint(myPoint.x, myPoint.y) << endl;
+        cout<<endl;
+    }
 }
 
 void Interface::callError(string error){
