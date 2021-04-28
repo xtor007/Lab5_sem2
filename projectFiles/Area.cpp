@@ -32,12 +32,21 @@ void Area::addPoint(Point newPoint) {
 
 bool Area::isInArea(Point startPoint, float radius) {
     
-    if ((minX <= startPoint.x) && (maxX >= startPoint.x) && (minY <= startPoint.y) && (maxY >= startPoint.y)) {
-        return true;
+    bool isXNorm = false;
+    bool isYNorm = false;
+    if ((minX <= startPoint.x) && (maxX >= startPoint.x)) {
+        isXNorm = true;
     }
-    if ((startPoint.distanceTo(minX, minY) <= radius) || (startPoint.distanceTo(maxX, minY) <= radius) || (startPoint.distanceTo(minX, maxY) <= radius) || (startPoint.distanceTo(maxX, maxY) <= radius)) {
-        return true;
+    if ((abs(minX - startPoint.x) <= radius) || (abs(startPoint.x - maxX) <= radius)) {
+        isXNorm = true;
     }
+    if ((minY <= startPoint.y) && (maxY >= startPoint.y)) {
+        isYNorm = true;
+    }
+    if ((abs(minY - startPoint.y) <= radius) || (abs(startPoint.y - maxY) <= radius)) {
+        isYNorm = true;
+    }
+    
     
     //учитыаем то, что с одной стороны Земли можем попасть на другую
     
@@ -49,10 +58,14 @@ bool Area::isInArea(Point startPoint, float radius) {
         newX = startPoint.x + parallelLength;
     }
     
-    if ((minX <= newX) && (maxX >= newX) && (minY <= startPoint.y) && (maxY >= startPoint.y)) {
-        return true;
+    if ((minX <= newX) && (maxX >= newX)) {
+        isXNorm = true;
     }
-    if ((sqrt((minX - newX)*(minX - newX) + (minY - startPoint.y)*(minY - startPoint.y)) <= radius) || (sqrt((maxX - newX)*(maxX - newX) + (minY - startPoint.y)*(minY - startPoint.y)) <= radius) || (sqrt((minX - newX)*(minX - newX) + (maxY - startPoint.y)*(maxY - startPoint.y)) <= radius) || (sqrt((maxX - newX)*(maxX - newX) + (maxY - startPoint.y)*(maxY - startPoint.y)) <= radius)) {
+    if ((abs(minX - newX) <= radius) || (abs(newX - maxX) <= radius)) {
+        isXNorm = true;
+    }
+    
+    if (isXNorm && isYNorm) {
         return true;
     }
     return false;
@@ -66,3 +79,17 @@ float Area::toCenter(Point point) {
 }
 
 
+//if ((minX <= startPoint.x) && (maxX >= startPoint.x) && (minY <= startPoint.y) && (maxY >= startPoint.y)) {
+//    return true;
+//}
+//if ((startPoint.distanceTo(minX, minY) <= radius) || (startPoint.distanceTo(maxX, minY) <= radius) || (startPoint.distanceTo(minX, maxY) <= radius) || (startPoint.distanceTo(maxX, maxY) <= radius)) {
+//    return true;
+//}
+
+
+//if ((minX <= newX) && (maxX >= newX) && (minY <= startPoint.y) && (maxY >= startPoint.y)) {
+//    return true;
+//}
+//if ((sqrt((minX - newX)*(minX - newX) + (minY - startPoint.y)*(minY - startPoint.y)) <= radius) || (sqrt((maxX - newX)*(maxX - newX) + (minY - startPoint.y)*(minY - startPoint.y)) <= radius) || (sqrt((minX - newX)*(minX - newX) + (maxY - startPoint.y)*(maxY - startPoint.y)) <= radius) || (sqrt((maxX - newX)*(maxX - newX) + (maxY - startPoint.y)*(maxY - startPoint.y)) <= radius)) {
+//    return true;
+//}
